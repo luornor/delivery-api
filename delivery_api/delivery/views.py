@@ -22,8 +22,8 @@ class RootAPIView(APIView):
     def get(self, request, *args, **kwargs):
         api_urls = {
             "Create Delivery": request.build_absolute_uri(reverse_lazy('create-delivery')),
-            "List Deliveries": request.build_absolute_uri(reverse_lazy('list-deliveries')),
-            "Update Delivery": request.build_absolute_uri(reverse_lazy('update-delivery', args=[1])),
+            "Delivery Detail": request.build_absolute_uri(reverse_lazy('delivery-detail', args=[1])),
+            "Order Deliveries": request.build_absolute_uri(reverse_lazy('order-deliveries', args=[1])),
         }
         return Response(api_urls, status=status.HTTP_200_OK)
 
