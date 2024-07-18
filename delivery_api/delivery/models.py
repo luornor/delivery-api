@@ -27,12 +27,16 @@ class Delivery(models.Model):
 
     def calculate_estimated_delivery_time(self):
         if self.delivery_method == 'standard':
-            self.estimated_delivery_time = datetime.now() + timedelta(days=5)
+            return datetime.now() + timedelta(days=5)
         elif self.delivery_method == 'express':
-            self.estimated_delivery_time= datetime.now() + timedelta(days=2)
+            return datetime.now() + timedelta(days=2)
         elif self.delivery_method == 'overnight':
-            self.estimated_delivery_time = datetime.now() + timedelta(days=1)
+            return datetime.now() + timedelta(days=1)
         return None
+
+    def save(self, *args, **kwargs):
+        self.estimated_delivery_time = self.calculate_estimated_delivery_time()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.id}'
