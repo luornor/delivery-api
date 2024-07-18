@@ -55,7 +55,7 @@ class DeliveryCreateView(generics.CreateAPIView):
             {
                 "message": "Delivery record created successfully",
                 "delivery": {
-                    'delivery_id': delivery.delivery_id,
+                    'delivery_id': delivery.id,
                     "order id": delivery.order_id,
                     "delivery provider": delivery.delivery_provider,
                     "status": delivery.status,
@@ -93,7 +93,7 @@ class DeliveryDetailView(generics.RetrieveUpdateAPIView):
             {
                 "message": "Delivery information retrieved successfully",
                 "delivery": {
-                    'delivery_id': delivery.delivery_id,
+                    'delivery_id': delivery.id,
                     "order id": delivery.order_id,
                     "delivery provider": delivery.delivery_provider,
                     "status": delivery.status,
@@ -134,7 +134,7 @@ class DeliveryDetailView(generics.RetrieveUpdateAPIView):
             {
                 "message": "Delivery status updated successfully",
                 "delivery": {
-                    'delivery_id': delivery.delivery_id,
+                    'delivery_id': delivery.id,
                     "order id": delivery.order_id,
                     "delivery provider": delivery.delivery_provider,
                     'tracking number': delivery.tracking_number,
@@ -170,7 +170,7 @@ class DeliveryDetailView(generics.RetrieveUpdateAPIView):
             {
                 "message": "Delivery status partially updated successfully",
                 "delivery": {
-                    'delivery_id': delivery.delivery_id,
+                    'delivery_id': delivery.id,
                     "order id": delivery.order_id,
                     "delivery provider": delivery.delivery_provider,
                     'tracking number': delivery.tracking_number,

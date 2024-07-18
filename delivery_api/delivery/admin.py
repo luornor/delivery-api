@@ -3,7 +3,7 @@ from .models import Delivery
 # Register your models here.
 
 class DeliveryAdmin(admin.ModelAdmin):
-    list_display = ('delivery_id','order_id','status', 'current_location','created_at','estimated_delivery_time')
+    list_display = ('id','order_id','status', 'current_location','created_at','estimated_delivery_time')
     list_filter = ('status', 'delivery_provider', 'created_at', 'updated_at')
     search_fields = ('id','order_id','delivery_provider')
     ordering = ('-created_at',)
