@@ -1,8 +1,6 @@
-# Create your models here.
 from django.db import models
 import uuid
 from datetime import datetime, timedelta
-
 
 class Delivery(models.Model):
     DELIVERY_CHOICES = [
@@ -36,7 +34,9 @@ class Delivery(models.Model):
 
     def save(self, *args, **kwargs):
         self.estimated_delivery_time = self.calculate_estimated_delivery_time()
+        print(f"Calculated estimated delivery time: {self.estimated_delivery_time}")
         super().save(*args, **kwargs)
+        print(f"Saved delivery with estimated time: {self.estimated_delivery_time}")
 
     def __str__(self):
         return f'{self.id}'

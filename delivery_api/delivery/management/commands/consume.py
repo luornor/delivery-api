@@ -22,6 +22,7 @@ def on_message_received(ch, method, properties, body):
             current_location=order_data['address'],
             delivery_method=order_data['delivery_method']
         )
+        delivery.save()
         print(f'Delivery created: {delivery}')
     except Exception as e:
         print(f'Error creating delivery: {str(e)}')
