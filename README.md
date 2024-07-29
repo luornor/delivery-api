@@ -21,8 +21,8 @@
 
 1. **Clone the repository:**
 
-   git clone https://github.com/luornor/api-gateway.git
-   cd api-gateway
+   git clone https://github.com/luornor/delivery-api.git
+   cd delivery-api
    
 ## Create a virtual environment:
 
