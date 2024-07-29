@@ -7,6 +7,7 @@
 
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Configuration](#configuration)
 - [Running the Project](#running-the-project)
 - [API Documentation](#api-documentation)
 
@@ -39,6 +40,7 @@ Run the following commands to apply the database migrations:
 python manage.py makemigrations
 python manage.py migrate
 
+## Configuration
 ### Environment Variables:
 
 Create a `.env` file in the project root and add the following environment variables:
