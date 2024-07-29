@@ -4,8 +4,8 @@ from .models import Delivery
 
 class DeliveryAdmin(admin.ModelAdmin):
     list_display = ('id','order_id','status', 'current_location','created_at','estimated_delivery_time')
-    list_filter = ('status', 'delivery_provider', 'created_at', 'updated_at')
-    search_fields = ('id','order_id','delivery_provider')
+    list_filter = ('status', 'payment_method', 'created_at', 'updated_at')
+    search_fields = ('id','order_id')
     ordering = ('-created_at',)
     readonly_fields = ('created_at', 'updated_at')
 

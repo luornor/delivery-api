@@ -1,7 +1,7 @@
 from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, AllowAny
 from django.urls import reverse_lazy
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
@@ -31,7 +31,7 @@ class RootAPIView(APIView):
 class DeliveryCreateView(generics.CreateAPIView):
     queryset = Delivery.objects.all()
     serializer_class = DeliverySerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     @swagger_auto_schema(
         operation_summary="Create Delivery",
@@ -57,7 +57,7 @@ class DeliveryCreateView(generics.CreateAPIView):
                 "delivery": {
                     'delivery_id': delivery.id,
                     "order id": delivery.order_id,
-                    "delivery provider": delivery.delivery_provider,
+                    "payment method": delivery.payment_method,
                     "status": delivery.status,
                     "current location": delivery.current_location,
                     'estimated_delivery_time': delivery.estimated_delivery_time,
@@ -72,7 +72,7 @@ class DeliveryCreateView(generics.CreateAPIView):
 class DeliveryDetailView(generics.RetrieveUpdateAPIView):
     queryset = Delivery.objects.all()
     serializer_class = DeliverySerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     lookup_field = 'delivery_id'
 
     @swagger_auto_schema(
@@ -95,7 +95,7 @@ class DeliveryDetailView(generics.RetrieveUpdateAPIView):
                 "delivery": {
                     'delivery_id': delivery.id,
                     "order id": delivery.order_id,
-                    "delivery provider": delivery.delivery_provider,
+                    "payment method": delivery.payment_method,
                     "status": delivery.status,
                     "current location": delivery.current_location,
                     'estimated_delivery_time': delivery.estimated_delivery_time,
@@ -122,7 +122,7 @@ class DeliveryDetailView(generics.RetrieveUpdateAPIView):
         instance = self.get_object()
         data = {
             'order_id': instance.order_id, 
-            'delivery_provider': instance.delivery_provider, 
+            'payment method': instance.payment_method, 
             'status': request.data.get('status')
         }
         serializer = self.get_serializer(instance, data=data, partial=partial)
@@ -136,8 +136,7 @@ class DeliveryDetailView(generics.RetrieveUpdateAPIView):
                 "delivery": {
                     'delivery_id': delivery.id,
                     "order id": delivery.order_id,
-                    "delivery provider": delivery.delivery_provider,
-                    'tracking number': delivery.tracking_number,
+                    "payment method": delivery.payment_method,
                     "status": delivery.status,
                     "current location": delivery.current_location,
                     'estimated_delivery_time': delivery.estimated_delivery_time,
@@ -172,8 +171,7 @@ class DeliveryDetailView(generics.RetrieveUpdateAPIView):
                 "delivery": {
                     'delivery_id': delivery.id,
                     "order id": delivery.order_id,
-                    "delivery provider": delivery.delivery_provider,
-                    'tracking number': delivery.tracking_number,
+                    "payment method": delivery.payment_method,
                     "status": delivery.status,
                     "current location": delivery.current_location,
                     'estimated_delivery_time': delivery.estimated_delivery_time,
@@ -187,7 +185,7 @@ class DeliveryDetailView(generics.RetrieveUpdateAPIView):
 
 class OrderDeliveriesListView(generics.ListAPIView):
     serializer_class = DeliverySerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         order_id = self.kwargs['orderId']

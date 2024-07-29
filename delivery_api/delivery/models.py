@@ -8,8 +8,12 @@ class Delivery(models.Model):
         ('express', 'Express'),
         ('overnight', 'Overnight'),
     ]
+    PAYMENT_CHOICES = [
+        ('momo', 'Momo'),
+        ('cash', 'Cash'),
+    ]
     order_id = models.IntegerField()
-    delivery_provider = models.CharField(max_length=255)
+    payment_method = models.CharField(max_length=255,choices=PAYMENT_CHOICES, default='cash')
     status = models.CharField(max_length=20, choices=[
         ('on_hold', 'On Hold'),
         ('ready', 'Ready'),
