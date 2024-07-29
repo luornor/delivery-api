@@ -22,8 +22,7 @@
 
    git clone https://github.com/luornor/api-gateway.git
    cd api-gateway
-# Django API Project Setup
-
+   
 ## Create a virtual environment:
 
 python -m venv venv
